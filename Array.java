@@ -2,7 +2,7 @@ import java.util.*;
 class Array{
     public static void main(String[] args) {
         Scanner sc=new Scanner(System.in);
-        Vector foo = new Vector();
+        ArrayList foo = new ArrayList();
         for (int i = 1; i <= 5; i++) 
             foo.add(sc.nextInt());
         System.out.println(foo);
