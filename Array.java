@@ -12,7 +12,7 @@ class Array{
         // Displaying the List 
         // after deletion 
         System.out.println(foo); 
-        
+        //lets see if it gets updated
         // Printing elements one by one 
         for (int i = 0; i < foo.size(); i++) 
             System.out.print(foo.get(i) + " ");
