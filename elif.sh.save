@@ -1,0 +1,16 @@
+
+if [[ $op == a ]] ; then add $arg1 $arg2
+elif [[ $op == s ]] ; then sub $arg1 $arg2
+elif [[ $op == m ]] ; then mult $arg1 $arg2
+elif [[ $op == d ]] ; then div $arg1 $arg2
+else
+echo $op is not a, s, m, or d, aborting ; exit 2 
+fi#!/bin/bash
+name=$1
+if ["$name" == a];
+then echo (($2+$3))
+elif ["$name" == s]
+echo (($2-$3)
+else
+echo no name
+fi
