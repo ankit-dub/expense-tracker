@@ -23,7 +23,7 @@ public class AppSecurity extends WebSecurityConfigurerAdapter{
         Users.add(User.withDefaultPasswordEncoder().username("Ankit").password("1234").roles("admin").build());
         Users.add(User.withDefaultPasswordEncoder().username("Sajal").password("4546").roles("electrical").build());
         Users.add(User.withDefaultPasswordEncoder().username("Sandesh").password("7897").roles("IT").build());
-        Users.add(User.withDefaultPasswordEncoder().username("Baba").password("1234").roles("mech").build());
+        Users.add(User.withDefaultPasswordEncoder().username("Baba").password("1234").roles("IT").build());
         //kill -9 $(lsof -t -i:8080)
 
         
