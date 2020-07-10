@@ -12,26 +12,37 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotNull;
+
+import org.hibernate.validator.constraints.Length;
+
 
 @Entity
 @Table(name = "usr")
 public class Usr {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "user_id")
     private int id;
 
     @Column(name = "first_name")
+    @NotNull(message = "fill the first name")
     private String name;
 
     @Column(name = "last_name")
+    @NotNull(message = "fill the last name")
     private String lastName;
 
     @Column(name = "email")
+    @NotNull(message = "fill the email")
+    @Email(message="Invaild email")
     private String email;
 
     @Column(name = "password")
+    @NotNull(message="fill the password")
+    @Length(min=4,message="min 4 characters")
     private String password;
 
     @Column(name = "status")
