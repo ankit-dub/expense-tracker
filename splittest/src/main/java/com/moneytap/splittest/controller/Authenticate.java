@@ -36,6 +36,12 @@ public class Authenticate {
         page.setViewName("home");
         return page;
     }
+    @RequestMapping(value = "/admin")
+    public ModelAndView adminhome() {
+        ModelAndView page = new ModelAndView();
+        page.setViewName("admin");
+        return page;
+    }
     @RequestMapping(value = "/register",method = RequestMethod.POST)
     public ModelAndView registrationUser(@Valid Usr user,BindingResult bindingResult,ModelMap modelMap){
             ModelAndView page=new ModelAndView();
