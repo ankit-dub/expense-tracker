@@ -3,7 +3,6 @@ package com.moneytap.splittest.controller;
 import com.moneytap.splittest.model.Usr;
 import com.moneytap.splittest.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
-//import org.springframework.boot.context.properties.bind.BindResult;
 import org.springframework.validation.BindingResult;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -16,6 +15,12 @@ import javax.validation.Valid;
 public class Authenticate {
     @Autowired
     UserService userService;
+    @RequestMapping(value ={"/"})
+    public ModelAndView dfault(){
+        ModelAndView page=new ModelAndView();
+        page.setViewName("default");
+        return page;
+    }
     @RequestMapping(value ={"/login"})
     public ModelAndView login(){
         ModelAndView page=new ModelAndView();
