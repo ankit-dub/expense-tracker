@@ -92,6 +92,7 @@ public class Usr {
         this.password = password;
     }
 
+    public String getStatus() { return status; }
 
     public void setStatus(String status) {
         this.status = status;
@@ -100,14 +101,11 @@ public class Usr {
     public void setRoles(Set<Role> roles) {
         this.roles = roles;
     }
+
     public Set<Role> getRoles() {
         return roles;
     }
-    public String getStatus() {
-        return status;
-    }
 
-    public Usr() {
-    }
+    public Usr() { }
 }
 

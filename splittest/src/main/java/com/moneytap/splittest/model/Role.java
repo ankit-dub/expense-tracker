@@ -44,9 +44,7 @@ public class Role {
         this.desc = desc;
     }
 
-    public Role() {
-    }
-
+    public Role() { }
 
 }
 
