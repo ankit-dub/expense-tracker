@@ -33,7 +33,7 @@
                             </thead>
                             <tbody>
                             <tr th:each="category : ${categories}">
-                                <td th:text="${category.category}"></td>
+                                <td th:text="${category.category}" href="@{http://localhost:8080/{id}(id=${category.categoryId}/expenses}"></td>
                                 <td th:text="${category.message}"></td>
                                 <td>
                                     <a th:href="@{/category/edit/{id}(id=${category.categoryId})}"

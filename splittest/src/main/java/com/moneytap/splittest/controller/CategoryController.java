@@ -36,7 +36,7 @@ public class CategoryController {
     @RequestMapping(path = "/edit")
     public String addCategory(Model model)
     {
-            model.addAttribute("category", new Category());
+        model.addAttribute("category", new Category());
         return "create";
     }
 
