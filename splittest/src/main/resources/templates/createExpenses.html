@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Add Expense detail</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">
+</head>
+
+<body>
+<div class="container my-5">
+    <h3> Add Expense detail </h3>
+    <div class="card">
+        <div class="card-body">
+            <div class="col-md-10">
+                <form action="#" th:action="@{/createExpenses}" th:object="${expenses}"
+                      method="post">
+                    <div class="row">
+                        <div class="form-group col-md-8">
+                            <label for="name" class="col-form-label">expense</label>
+                            <input type="text" th:field="*{expenseName}" class="form-control"
+                                   id="expense" placeholder="expense" />
+                        </div>
+                        <div class="form-group col-md-8">
+                            <label for="name" class="col-form-label">amount</label>
+                            <input type="text" th:field="*{amount}" class="form-control"
+                                   id="amount" placeholder="rupees" />
+                        </div>
+                        <div class="form-group col-md-8">
+                            <label for="name" class="col-form-label">Date</label>
+                            <input type="date" id="start" name="Date-start"
+                                   value="2018-07-22" min="2016-01-01" max="2020-12-31"
+                                   th:field="*{createdDate}" class="form-control"
+                                   id="createdDate" placeholder="Date" />
+                        </div>
+                        <div class="col-md-6">
+                            <input type="submit" class="btn btn-primary" value=" Submit ">
+                        </div>
+                        <input type="hidden" id="id" th:field="*{expenseId}">
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+
+</html>
