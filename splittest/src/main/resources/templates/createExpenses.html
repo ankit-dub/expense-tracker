@@ -39,7 +39,10 @@
                         <div class="col-md-6">
                             <input type="submit" class="btn btn-primary" value=" Submit ">
                         </div>
-                        <input type="hidden" id="id" th:field="*{expenseId}">
+                        <div>
+                            <input type="hidden" id="expenseId" th:field="*{expenseId}">
+                        </div>
+
                     </div>
                 </form>
             </div>
