@@ -62,7 +62,7 @@ public class ExpenseController {
         return "expense";
     }
 
-    @RequestMapping(value = "/expense/add", method = RequestMethod.POST)
+    @RequestMapping(value = "/expense/add")
     public String addExpense(Model model) {
         {
             model.addAttribute("expenses", new Expense());

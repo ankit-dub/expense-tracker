@@ -11,7 +11,7 @@ import javax.validation.constraints.Past;
 public class Expense {
 
     @Id
-    @GeneratedValue(strategy=GenerationType.IDENTITY)
+    @GeneratedValue(strategy=GenerationType.AUTO)
     @Column(name = "expense_id")
     private int expenseId;
 
