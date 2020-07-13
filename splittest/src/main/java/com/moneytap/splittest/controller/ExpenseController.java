@@ -86,7 +86,7 @@ public class ExpenseController {
         return "addFriend";
     }
 
-    @RequestMapping(path = "/createExpenses", method = RequestMethod.POST)
+    @RequestMapping(path = "/createExpense", method = RequestMethod.POST)
     public String createExpense(Expense expenses)
     {   expenses.setExpenseName(expenses.getExpenseName());
         expenses.setAmount(expenses.getAmount());
