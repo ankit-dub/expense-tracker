@@ -87,13 +87,14 @@ public class ExpenseController {
     }
 
     @RequestMapping(path = "/createExpense", method = RequestMethod.POST)
-    public String createExpense(Expense expenses)
+    public String createExpense(@Valid Expense expenses)
     {   expenses.setExpenseName(expenses.getExpenseName());
         expenses.setAmount(expenses.getAmount());
         expenses.setCreatedDate(expenses.getCreatedDate());
         expenses = expenseRepository.save(expenses);
         return "redirect:/category/expense/{id}";
     }
+
     @RequestMapping(path = "/tagFriend", method = RequestMethod.POST)
     public String addUser(Usr usr)
     {   String email=usr.getEmail();

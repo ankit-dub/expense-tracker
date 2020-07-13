@@ -35,7 +35,7 @@ public class Usr {
     @NotNull(message = "fill the last name")
     private String lastName;
 
-    @Column(name = "email")
+    @Column(name = "email",unique=true)
     @NotNull(message = "fill the email")
     @Email(message="Invaild email")
     private String email;
