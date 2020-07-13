@@ -23,7 +23,7 @@ public class Expense {
     @Min(1)
     private double amount;
 
-    @Column(name = "create_date")
+    @Column(name = "created_date")
     @Past(message="Date cannot be in the future")
     private Date createdDate;
 

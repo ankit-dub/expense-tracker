@@ -1,7 +1,8 @@
-/*package com.moneytap.splittest.controller;
+package com.moneytap.splittest.controller;
 
 import com.moneytap.splittest.Repository.CategoryRepository;
 import com.moneytap.splittest.Repository.ExpenseRepository;
+import com.moneytap.splittest.Repository.Repo;
 import com.moneytap.splittest.exception.RecordNotFoundException;
 import com.moneytap.splittest.model.Category;
 import com.moneytap.splittest.model.Expense;
@@ -15,14 +16,13 @@ import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.WebDataBinder;
-import org.springframework.web.bind.annotation.InitBinder;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.validation.Valid;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Date;
 import java.util.List;
 
@@ -40,19 +40,26 @@ public class ExpenseController {
     @Autowired
     private CategoryRepository categoryRepository;
 
+    @Autowired
+    private Repo user;
+
     @InitBinder
     public void initBinder(WebDataBinder binder) {
         SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
         binder.registerCustomEditor(Date.class, "createdDate", new CustomDateEditor(format, false));
     }
 
-    @RequestMapping(value = "/{id}/expense")
+    @RequestMapping(value = "/category/expense/{id}")
     public String expense(@PathVariable("id") int id, Model model) throws RecordNotFoundException {
         Category category = categoryService.getCategoryById(id);
         model.addAttribute("category", category);
-
-        //model.addAttribute("expenses", expenses);
-        return "listexpenses";
+        Iterable<Expense> iter=expenseRepository.findAll();
+        List<Expense> list = new ArrayList<Expense>();
+        for (Expense item : iter) {
+            list.add(item);
+        }
+        model.addAttribute("expenses", list);
+        return "expense";
     }
 
     @RequestMapping(value = "/expense/add", method = RequestMethod.POST)
@@ -69,23 +76,36 @@ public class ExpenseController {
         if (id != 0) {
             Expense entity = expenseService.getExpenseById(id);
             model.addAttribute("expenses", entity);
-        } else {
-            model.addAttribute("expenses", new Category());
         }
         return "updateExpenses";
     }
     @RequestMapping(path = "/category/tag/{id}")
-    public String deleteCategoryById(Model model, @PathVariable("id") int id)
-    { categoryRepository.deleteById(id);
+    public String tagFriend(Model model, @PathVariable("id") int id)
+    {   //Usr usr=user.findByEmail(email);                  //from user repository
+        model.addAttribute("user", new Usr());
         return "addFriend";
     }
 
-    @RequestMapping(path = "/category/createExpenses", method = RequestMethod.POST)
+    @RequestMapping(path = "/createExpenses", method = RequestMethod.POST)
     public String createExpense(Expense expenses)
+    {   expenses.setExpenseName(expenses.getExpenseName());
+        expenses.setAmount(expenses.getAmount());
+        expenses.setCreatedDate(expenses.getCreatedDate());
+        expenses = expenseRepository.save(expenses);
+        return "redirect:/category/expense/{id}";
+    }
+    @RequestMapping(path = "/tagFriend", method = RequestMethod.POST)
+    public String addUser(Usr usr)
+    {   String email=usr.getEmail();
+        usr=user.findByEmail(email);
+        usr=user.save(usr);
+        return "redirect:/category/expense/{id}";
+    }
+    @RequestMapping(path = "/updateExpenses", method = RequestMethod.POST)
+    public String addUser(@RequestParam(value="amount",required = false) Float amount,Expense expense)
     {
-        expenseService.createnewExpense(expenses);
-        return "redirect:/category";
+        expenseService.updateAmount(amount,expense);
+        return "redirect:/category/expense/{id}";
     }
 }
 
-*/

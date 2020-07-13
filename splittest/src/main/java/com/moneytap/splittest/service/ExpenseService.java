@@ -34,26 +34,15 @@ public class ExpenseService {
     /*public List<Object[]> getbydate(Date fromDate, Date tillDate) {
         return expenseRepository.getExpenseByDate(fromDate, tillDate);}*/
 
-    public Expense createnewExpense(Expense obj) {
+    public Expense updateAmount(float amount,Expense obj) {
         {
             Optional<Expense> expense = expenseRepository.findById(obj.getExpenseId());
 
-            if(expense.isPresent())
-            {
                 Expense newEntity = expense.get();
-                newEntity.setExpenseName(obj.getExpenseName());
-                newEntity.setAmount(newEntity.getAmount());
+                newEntity.setAmount(newEntity.getAmount()-amount);
                 newEntity = expenseRepository.save(newEntity);
 
                 return newEntity;
-            } else {
-                obj.setExpenseName(obj.getExpenseName());
-                obj.setAmount(obj.getAmount());
-                obj = expenseRepository.save(obj);
-
-                return obj;
-            }
-
         }
     }
 }

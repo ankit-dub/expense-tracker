@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Tagging Friend</title>
+</head>
+<body>
+<h3> Add Friend email </h3>
+<form action="#" th:action="@{/tagFriend}" th:object="${user}"
+      method="post">
+    <div class="row">
+        <div class="form-group col-md-8">
+            <label for="name" class="col-form-label">friends id</label>
+            <input type="email" th:field="*{email}" class="form-control"
+                   id="email" placeholder="email" />
+        </div>
+        <div class="col-md-6">
+            <input type="submit" class="btn btn-primary" value=" Submit ">
+        </div>
+    </div>
+</form>
+</body>
+</html>

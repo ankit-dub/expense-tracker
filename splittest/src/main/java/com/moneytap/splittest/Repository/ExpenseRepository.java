@@ -18,6 +18,5 @@ public interface ExpenseRepository extends CrudRepository<Expense, Integer> {
 
 */
 
-
 }
 
