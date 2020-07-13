@@ -91,6 +91,8 @@ public class ExpenseController {
     {   expenses.setExpenseName(expenses.getExpenseName());
         expenses.setAmount(expenses.getAmount());
         expenses.setCreatedDate(expenses.getCreatedDate());
+        //expenses.setUser(user.findByEmail(usr.getEmail()));
+        //expenses.setCategory(categoryRepository.findById(category.getCategoryId()));
         expenses = expenseRepository.save(expenses);
         return "redirect:/category/expense/{id}";
     }

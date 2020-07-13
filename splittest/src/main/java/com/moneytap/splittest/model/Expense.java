@@ -89,5 +89,19 @@ public class Expense {
         this.createdDate = createdDate;
     }
 
+    public Usr getUser() {
+        return user;
+    }
 
+    public void setUser(Usr user) {
+        this.user = user;
+    }
+
+    public Category getCategory() {
+        return category;
+    }
+
+    public void setCategory(Category category) {
+        this.category = category;
+    }
 }
