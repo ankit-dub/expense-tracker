@@ -18,7 +18,7 @@ public class Role {
     private String role;
 
     @Column(name = "role_desc")
-    private String desc;
+    private String desc;    //description of what it can access
 
     public int getId() {
         return id;

@@ -11,7 +11,7 @@ import javax.validation.constraints.Past;
 public class Expense {
 
     @Id
-    @GeneratedValue(strategy=GenerationType.AUTO)
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
     @Column(name = "expense_id")
     private int expenseId;
 
@@ -28,9 +28,11 @@ public class Expense {
     private Date createdDate;
 
     @ManyToOne
+    @JoinColumn(name = "user_id", referencedColumnName = "user_id")
     private Usr user;
 
     @ManyToOne
+    @JoinColumn(name = "category_id", referencedColumnName = "category_id")
     private Category category;
 
     public Expense() {
