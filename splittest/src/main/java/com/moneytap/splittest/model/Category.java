@@ -1,9 +1,16 @@
 package com.moneytap.splittest.model;
 
 
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 
+@AllArgsConstructor
+@NoArgsConstructor
+@Data
 @Entity
 @Table(name = "Category")
 public class Category {
@@ -19,42 +26,5 @@ public class Category {
 
     @Column(name = "message")
     private String message;
-
-    public String getMessage() {
-        return message;
-    }
-
-    public Category(int categoryId, String category, String message) {
-        this.categoryId = categoryId;
-        this.category = category;
-        this.message = message;
-    }
-
-    public void setMessage(String message) {
-        this.message = message;
-    }
-
-    public Category() {
-        // TODO Auto-generated constructor stub
-    }
-
-
-
-    public int getCategoryId() {
-        return categoryId;
-    }
-
-    public void setCategoryId(int categoryId) {
-        this.categoryId = categoryId;
-    }
-
-    public String getCategory() {
-        return category;
-    }
-
-    public void setCategory(String category) {
-        this.category = category;
-    }
-
 
 }
