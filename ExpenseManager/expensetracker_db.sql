@@ -1,7 +1,4 @@
 create database expensemanagerdb;
-\connect expensemanagerdb;
-alter default privileges grant all on tables to expensemanager;
-alter default privileges grant all on sequences to expensemanager;
 
 create table users(
 user_id integer primary key not null,
