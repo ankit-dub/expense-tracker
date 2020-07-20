@@ -1,8 +1,11 @@
 package com.moneytap.splittest.controller;
 
+import com.moneytap.splittest.Repository.Repo;
+import com.moneytap.splittest.model.Category;
 import com.moneytap.splittest.model.Usr;
 import com.moneytap.splittest.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -10,11 +13,16 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 import javax.validation.Valid;
+import java.util.List;
 
 @Controller
 public class Authenticate {
     @Autowired
     UserService userService;
+
+    @Autowired
+    Repo userRepo;
+
     @RequestMapping(value ={"/"})
     public ModelAndView dfault(){
         ModelAndView page=new ModelAndView();
@@ -42,10 +50,10 @@ public class Authenticate {
         return page;
     }
     @RequestMapping(value = "/admin")
-    public ModelAndView adminhome() {
-        ModelAndView page = new ModelAndView();
-        page.setViewName("admin");
-        return page;
+    public String adminhome(Model model) {
+        List<Usr> list = userRepo.findAll();
+        model.addAttribute("users", list);
+        return "admin";
     }
     @RequestMapping(value = "/register",method = RequestMethod.POST)
     public ModelAndView registrationUser(@Valid Usr user,BindingResult bindingResult,ModelMap modelMap){
