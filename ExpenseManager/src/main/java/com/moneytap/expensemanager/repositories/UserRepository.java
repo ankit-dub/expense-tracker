@@ -14,9 +14,11 @@ import org.springframework.stereotype.Repository;
 
 import java.sql.PreparedStatement;
 import java.sql.Statement;
+import java.util.List;
 
 @Repository
 public interface UserRepository extends JpaRepository<User,Integer> {
+    public List<User> findAll();
 
     public User findByEmail(String email);
 

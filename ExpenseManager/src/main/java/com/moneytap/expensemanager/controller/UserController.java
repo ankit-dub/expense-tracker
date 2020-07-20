@@ -8,14 +8,12 @@ import io.jsonwebtoken.SignatureAlgorithm;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 @RestController
@@ -38,6 +36,13 @@ public class UserController {
         User usr = userService.registerUser(user);
         return new ResponseEntity<>(generateJWTToken(usr), HttpStatus.OK);
     }
+
+    @GetMapping("/admin")
+    public ResponseEntity<List<User>> getAllUser(){
+        List<User> users=userService.getAllUser();
+        return new ResponseEntity<>(users, HttpStatus.OK);
+    }
+
 
     private Map<String, String> generateJWTToken(User user) {
         long timestamp = System.currentTimeMillis();

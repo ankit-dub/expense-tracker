@@ -9,6 +9,7 @@ import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
 import java.util.regex.Pattern;
 
 @Service
@@ -34,5 +35,9 @@ public class UserService {
         String hashpassword= BCrypt.hashpw(user.getPassword(),BCrypt.gensalt(10));
         user.setPassword(hashpassword);
         return userRepository.save(user);
+    }
+
+    public List<User> getAllUser(){
+        return userRepository.findAll();
     }
 }
