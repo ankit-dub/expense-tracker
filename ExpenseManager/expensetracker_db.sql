@@ -30,8 +30,6 @@ l integer not null
 alter table transactions add constraint trans_cat_fk
 foreign key (category_id) references categories(category_id);
 
-alter table transactions add constraint trans_users_fk
-foreign key (user_id) references users(user_id);
 
 create sequence users_seq increment 1 start 1;
 create sequence categories_seq increment 1 start 1;
