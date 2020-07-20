@@ -45,7 +45,7 @@ public class ExpenseController {
 
     @InitBinder
     public void initBinder(WebDataBinder binder) {
-        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+        SimpleDateFormat format = new SimpleDateFormat("dd-MM-yyyy");
         binder.registerCustomEditor(Date.class, "createdDate", new CustomDateEditor(format, false));
     }
 
@@ -105,7 +105,7 @@ public class ExpenseController {
         return "redirect:/category/expense/{id}";
     }
     @RequestMapping(path = "/updateExpenses", method = RequestMethod.POST)
-    public String addUser(@RequestParam(value="amount",required = false) Float amount,Expense expense)
+    public String addUser(@RequestParam(value="amount",required = false) Double amount,Expense expense)
     {
         expenseService.updateAmount(amount,expense);
         return "redirect:/category/expense/{id}";

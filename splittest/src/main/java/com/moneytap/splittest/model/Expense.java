@@ -23,7 +23,7 @@ public class Expense {
     private int expenseId;
 
     @Column(name = "expense_name")
-    @NotNull(message="Expense name cannot be empty")
+    //@NotNull(message="Expense name cannot be empty")
     private String expenseName;
 
     @Column(name = "amount")

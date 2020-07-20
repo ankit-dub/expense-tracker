@@ -7,6 +7,8 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
+import java.util.ArrayList;
+import java.util.Collection;
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -24,7 +26,9 @@ public class Category {
     @NotNull(message="category cannot be empty")
     private String category;
 
-    @Column(name = "message")
+    @Column(name = "membr")
     private String message;
 
+    @OneToMany(mappedBy = "category")
+    private Collection<Expense> expense=new ArrayList<Expense>();
 }
