@@ -1,5 +1,5 @@
-mkdir mt
-cd mt
+mkdir csv
+cd csv
 
 
 for i in `seq -f "%03g" 100`
